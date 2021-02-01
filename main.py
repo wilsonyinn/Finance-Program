@@ -1,0 +1,3 @@
+import ezsheets
+
+ezsheets.listSpreadsheets()
