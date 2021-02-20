@@ -1,0 +1,13 @@
+Description,,Summary Amt.
+Beginning balance as of 01/09/2021,,"3104.14"
+Total credits,,"114.80"
+Total debits,,"-1296.31"
+Ending balance as of 02/05/2021,,"1922.63"
+
+Date,Description,Amount,Running Bal.
+01/09/2021,Beginning balance as of 01/09/2021,,"3104.14"
+01/19/2021,"BANK OF AMERICA CREDIT CARD Bill Payment","-196.31","2907.83"
+01/22/2021,"ROBINHOOD DES:Funds ID:XXXXX9253 INDN:Wilson Yin CO ID:XXXXX64776 WEB","-300.00","2607.83"
+01/27/2021,"Online Banking transfer from SAV 9930 Confirmation# 1573396142","37.33","2645.16"
+01/28/2021,"Bank of America DES:CASHREWARD ID:YIN INDN:0000000612754913000000 CO ID:XXXXX90310 PPD","77.47","2722.63"
+01/28/2021,"ROBINHOOD DES:Funds ID:XXXXX9253 INDN:Wilson Yin CO ID:XXXXX64776 WEB","-800.00","1922.63"

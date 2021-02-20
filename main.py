@@ -1,39 +1,54 @@
+import csv
+import datetime
 import ezsheets
-
-ss = ezsheets.Spreadsheet('1dFsi_grEKhKPFFx2EkJRVs0FRU-LV3fq1nqbmVneFIM')
-print(ss.title)
-# ask for password before running program
-guessAttempts = 3
-password = "161616"
-userPassword = input("Enter 6-digit password: ")
-guessAttempts -= 1
-
-while (userPassword != password and guessAttempts >= 0):
-    if (guessAttempts == 0):
-        print("No more attempts. Program is closing...")
-        quit()
-    guessAttempts -= 1
-    userPassword = input("Try again. Enter 6-digit password: ")
-
-print("Program will now start!")
-
-
-# when program runs, automatically update my infos using apis and save the info to google sheets
-
-"""show an options menu with choices:
-    1) view current total assets
-        a) investments
-        b) liquid assets
-    2) view assets history (makes a graph)
-        a) over the last week
-        b) over the last month 
-        c) over the last year
-        d) over the last x years
-        e) all time
-    3) view spendings 
-        a) amount spent each month
-        b) amount spent each month by category
-    4) view stock assets
-        a) change overtime in stock assets 
-        b) view stock portfolio 
+import openpyxl
 """
+ss = ezsheets.Spreadsheet('1X-BALp-_4x9ex2p6DYMOiJC_ZKPqQd0-esM1uv7qSmg')
+sh1 = ss[0]  # sh1 = Transactions Sheet
+sh2 = ss[1]  # sh2 = Monthly Balance Sheet
+
+with open('stmt.csv', newline='') as csvfile:
+    reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+    row_count = 1
+    for row in reader:
+        if row_count == 2:
+            starting_balance = row[4][row[4].index('"') + 1:len(row[4]) - 1]
+            starting_balance = float(starting_balance)
+            start_date = row[4][0:10]
+        if row_count == 3:
+            totalDeposit = row[1][row[1].index('"') + 1: len(row[1]) - 1]
+            totalDeposit = float(totalDeposit)
+        if row_count == 4:
+            totalWithdraw = row[1][row[1].index('"') + 1: len(row[1]) - 1]
+            totalWithdraw = float(totalWithdraw)
+        if row_count == 5:
+            ending_date = row[4][0:10]
+        if row_count >= 9:
+            sh1.updateRow(sh1.rowCount + 1,
+                          [row[0], row[1], '', '', row[2], row[3]])
+            print(row)
+        row_count += 1
+
+
+ending_balance = starting_balance + totalDeposit + totalWithdraw
+
+month_number = start_date[0:2]
+
+
+datetime_object = datetime.datetime.strptime(month_number, "%m")
+month_name = datetime_object.strftime("%B")
+
+print()
+print(month_name + " Statement")
+print()
+print("Start Date: " + start_date)
+print("End Date: " + ending_date)
+print("Starting Balance: " + str(starting_balance))
+print("Deposits: " + str(totalDeposit))
+print("Withdrawls: " + str(totalWithdraw))
+print("Ending Balance: " + str(ending_balance))
+print(sh1.frozenRowCount)
+"""
+
+wb = openpyxl.load_workbook('Finance Tracker.xlsx')
+print(type(wb))
