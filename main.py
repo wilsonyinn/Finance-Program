@@ -1,6 +1,12 @@
 import csv
 import datetime
 import openpyxl
+
+wb = openpyxl.load_workbook('Finance Tracker.xlsx')
+ws = wb.active
+
+
+
 """
 ss = ezsheets.Spreadsheet('1X-BALp-_4x9ex2p6DYMOiJC_ZKPqQd0-esM1uv7qSmg')
 sh1 = ss[0]  # sh1 = Transactions Sheet
@@ -23,8 +29,7 @@ with open('stmt.csv', newline='') as csvfile:
         if row_count == 5:
             ending_date = row[4][0:10]
         if row_count >= 9:
-            sh1.updateRow(sh1.rowCount + 1,
-                          [row[0], row[1], '', '', row[2], row[3]])
+            ws.append(row[0], row[1], '', '', row[2], row[3])
             print(row)
         row_count += 1
 
@@ -49,5 +54,4 @@ print("Ending Balance: " + str(ending_balance))
 print(sh1.frozenRowCount)
 """
 
-wb = openpyxl.load_workbook('Finance Tracker.xlsx')
-print(type(wb))
+
