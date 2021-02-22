@@ -1,6 +1,5 @@
 import csv
 import datetime
-import ezsheets
 import openpyxl
 """
 ss = ezsheets.Spreadsheet('1X-BALp-_4x9ex2p6DYMOiJC_ZKPqQd0-esM1uv7qSmg')
