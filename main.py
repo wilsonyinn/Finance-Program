@@ -3,14 +3,8 @@ import datetime
 import openpyxl
 
 wb = openpyxl.load_workbook('Finance Tracker.xlsx')
-ws = wb.active
+ws = wb['Sheet1']
 
-
-
-"""
-ss = ezsheets.Spreadsheet('1X-BALp-_4x9ex2p6DYMOiJC_ZKPqQd0-esM1uv7qSmg')
-sh1 = ss[0]  # sh1 = Transactions Sheet
-sh2 = ss[1]  # sh2 = Monthly Balance Sheet
 
 with open('stmt.csv', newline='') as csvfile:
     reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
@@ -29,7 +23,7 @@ with open('stmt.csv', newline='') as csvfile:
         if row_count == 5:
             ending_date = row[4][0:10]
         if row_count >= 9:
-            ws.append(row[0], row[1], '', '', row[2], row[3])
+            ws.append([row[0]])
             print(row)
         row_count += 1
 
@@ -41,7 +35,11 @@ month_number = start_date[0:2]
 
 datetime_object = datetime.datetime.strptime(month_number, "%m")
 month_name = datetime_object.strftime("%B")
-
+"""I came to the conclusion that the program is working and there are changes being made 
+   but i do not know where to find the file. Two possibilities I can currently hypothesize:
+                1) The changes are being made and I am actually writing on the spreadsheet, but I just cant find which one
+                2) The changes just arent permanent/visible and i need to figure out how to make it permanent/visible
+                """
 print()
 print(month_name + " Statement")
 print()
@@ -51,7 +49,8 @@ print("Starting Balance: " + str(starting_balance))
 print("Deposits: " + str(totalDeposit))
 print("Withdrawls: " + str(totalWithdraw))
 print("Ending Balance: " + str(ending_balance))
-print(sh1.frozenRowCount)
-"""
 
 
+print(ws['C5'].value)
+print(ws['A1'].value)
+print(ws['F2'].value)
