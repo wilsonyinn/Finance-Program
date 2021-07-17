@@ -35,11 +35,7 @@ month_number = start_date[0:2]
 
 datetime_object = datetime.datetime.strptime(month_number, "%m")
 month_name = datetime_object.strftime("%B")
-"""I came to the conclusion that the program is working and there are changes being made 
-   but i do not know where to find the file. Two possibilities I can currently hypothesize:
-                1) The changes are being made and I am actually writing on the spreadsheet, but I just cant find which one
-                2) The changes just arent permanent/visible and i need to figure out how to make it permanent/visible
-                """
+
 print()
 print(month_name + " Statement")
 print()
